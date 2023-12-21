@@ -1,0 +1,13 @@
+name: butler login action
+description: Sets the BUTLER_API_KEY environment variable for use by butler.
+
+inputs:
+  credentials:
+    type: string
+    required: true
+
+runs:
+  using: composite
+  steps:
+  - run: echo "BUTLER_API_KEY=${{ inputs.credentials }}" >> $GITHUB_ENV
+    shell: bash
